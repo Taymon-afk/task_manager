@@ -1,10 +1,9 @@
 import datetime
 
-# Данные для проверки (моделируем сущности простыми переменными)
 project_name = "Веб-сайт"
 project_status = "active"         # "active" или "completed"
 max_tasks = 10
-current_tasks_count = 8           # сколько уже задач в проекте
+current_tasks_count = 8      
 
 user_name = "Алексей"
 user_role = "admin"               # "admin", "member" или "guest"
@@ -13,7 +12,6 @@ task_title = "Сверстать главную страницу"
 task_priority = "high"            # "low", "medium", "high"
 task_deadline = datetime.date(2026, 10, 1)
 
-# Проверка возможности добавления задачи
 can_add = False
 reason = ""
 
@@ -27,7 +25,6 @@ else:
     can_add = True
     reason = "Задача может быть добавлена"
 
-# Вывод результата
 print("=== Проверка создания задачи ===")
 print(f"Проект: {project_name}")
 print(f"Статус проекта: {project_status}")
