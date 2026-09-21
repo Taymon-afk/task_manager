@@ -1,41 +1,46 @@
-import datetime
+from datetime import date
 
-project_name = "Веб-сайт"
-project_status = "active"         # "active" или "completed"
-max_tasks = 10
-current_tasks_count = 8      
+from models import Project, Task, User
 
-user_name = "Алексей"
-user_role = "admin"               # "admin", "member" или "guest"
 
-task_title = "Сверстать главную страницу"
-task_priority = "high"            # "low", "medium", "high"
-task_deadline = datetime.date(2026, 10, 1)
+def main() -> None:
+    """Запускает демонстрационный сценарий приложения."""
+    user = User(
+        user_id=1,
+        name="Алексей",
+        role="admin",
+    )
 
-can_add = False
-reason = ""
+    project = Project(
+        project_id=1,
+        name="Веб-сайт",
+        status="active",
+        max_tasks=10,
+    )
 
-if project_status != "active":
-    reason = "Проект не активен"
-elif current_tasks_count >= max_tasks:
-    reason = "Достигнут лимит задач в проекте"
-elif user_role not in ("admin", "member"):
-    reason = "У пользователя нет прав на создание задач"
-else:
-    can_add = True
-    reason = "Задача может быть добавлена"
+    task = Task(
+        task_id=1,
+        title="Сверстать главную страницу",
+        assignee=user,
+        priority="high",
+        deadline=date(2026, 10, 1),
+    )
 
-print("=== Проверка создания задачи ===")
-print(f"Проект: {project_name}")
-print(f"Статус проекта: {project_status}")
-print(f"Текущее количество задач: {current_tasks_count} из {max_tasks}")
-print(f"Пользователь: {user_name} (роль: {user_role})")
-print(f"Задача: {task_title}")
-print(f"Приоритет: {task_priority}")
-print(f"Дедлайн: {task_deadline}")
-print(f"Результат: {reason}")
+    task_created, message = project.add_task(
+        task=task,
+        user=user,
+    )
 
-if can_add:
-    print("Задача может быть создана.")
-else:
-    print("Создание задачи невозможно.")
+    print("=== Сервис управления задачами ===")
+    print(project)
+    print()
+
+    if task_created:
+        print(task)
+        print()
+
+    print(f"Результат: {message}")
+
+
+if __name__ == "__main__":
+    main()
