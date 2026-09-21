@@ -23,7 +23,10 @@ class Project:
         """Возвращает количество задач проекта."""
         return len(self.tasks)
 
-    def can_add_task(self, user: User) -> tuple[bool, str]:
+    def can_add_task(
+        self,
+        user: User,
+    ) -> tuple[bool, str]:
         """Проверяет возможность добавления задачи."""
         if self.status != "active":
             return False, "Проект не активен"
