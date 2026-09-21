@@ -1,0 +1,11 @@
+[
+    {
+        "id": 1,
+        "project_id": 1,
+        "title": "Сверстать главную страницу",
+        "assignee_id": 1,
+        "priority": "high",
+        "deadline": "2026-10-01",
+        "is_completed": false
+    }
+]

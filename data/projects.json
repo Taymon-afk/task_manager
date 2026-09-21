@@ -1,0 +1,8 @@
+[
+    {
+        "id": 1,
+        "name": "Веб-сайт",
+        "status": "active",
+        "max_tasks": 10
+    }
+]
